@@ -1,0 +1,50 @@
+.IconRow{
+    display: flex;
+    flex-direction: row;
+    height: 4vw;
+    margin: 3%;
+    /* margin-top: 5vh; */
+    /* border: 1px solid red; */
+    width:  20vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Icon{
+    height: 100%;
+    width: 4vw;
+    border: 3px solid white;
+    margin-right: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    cursor: pointer;
+    margin-top: 0;
+}
+.Icon:hover{
+    color: rgba(229, 47, 47, 0.945);
+    border: 3px solid rgba(229, 47, 47, 0.945);
+}
+
+@media (max-width: 700px){
+    .IconRow{
+        display: flex;
+        flex-direction: row;
+        gap: 8vw;
+        height: 12vw;
+        margin: 3%;
+        /* margin-top: 5vh; */
+        /* border: 1px solid green; */
+    }
+    .Icon{
+        height: 100%;
+        width: 12vw;
+        border: 3px solid white;
+        margin-right: 5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 6vw;
+        cursor: pointer;
+    }
+}
