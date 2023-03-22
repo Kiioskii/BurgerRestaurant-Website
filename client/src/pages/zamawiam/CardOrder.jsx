@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-
-const CardOrder=({item})=>{
+const CardOrder=({item,takeProduct})=>{
 
     return(
 
@@ -12,13 +12,14 @@ const CardOrder=({item})=>{
                     <h1>{item.title}</h1>
                 </div>
                 <div className="orderRightSide">
-                    <button>{item.price}zł</button>
+                    <motion.div  className="box"  whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                        <button onClick={()=>takeProduct(item)}>{item.price}zł</button>
+                    </motion.div>
                 </div>
             </div>
             <div className="orderBottomPart">
                 <p>{item.desc}</p>
             </div>
-
 
         </CardOrderContainer>
     )
@@ -43,6 +44,10 @@ const CardOrderContainer=styled.div`
         font-family: 'Oswald', sans-serif;
         /* border: 1px solid yellow; */
     }
+    .box{
+        width: 100%;
+    }
+
     .orderRightSide{
         /* border: 1px solid yellow; */
         width: 8vw;

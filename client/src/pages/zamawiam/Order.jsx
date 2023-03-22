@@ -5,8 +5,8 @@ import { orderData } from '../../assets/data/order'
 import CardOrder from './CardOrder'
 import statua from "../../assets/img/statua2.jpg"
 import bizon from "../../assets/img/bison2.jpg"
-import flaga from "../../assets/img/flagA.jpg"
-const Order=()=>{
+
+const Order=({takeProduct})=>{
 
     const[order,setOrder]=React.useState("burger");
     const [style,setStyle]=React.useState({
@@ -53,13 +53,12 @@ const Order=()=>{
                 <img src={statua} alt="statua" className='watermarkOrder' id="statua"/>
                 <img src={bizon} alt="bizon" className='watermarkOrder' id="bizon"/>
                 <img src='https://turystycznyninja.pl/wp-content/uploads/2022/08/Stany-w-USA-mapa-shutterstock.com-DenysHolovatiuk.jpg' className='watermarkOrder' id="mapa"/>
-                {/* <img src={flaga} alt="flaga" className='watermarkOrder' id="flaga"/> */}
                 <div className='orderMenu' style={style} >
                     {
                         orderData.map((item,index)=>{
                             if(item.type===order){
                                 return(
-                                    <CardOrder item={item} key={index}/>
+                                    <CardOrder item={item} key={index} takeProduct={takeProduct}/>
                                 )
                             }
                         })
@@ -73,6 +72,7 @@ const Order=()=>{
 export default Order;
 const OrderContainer=styled.div`
     min-height: 100vh;
+    overflow-x: hidden;
     height: auto;
     /* height: auto; */
     width: 100%;

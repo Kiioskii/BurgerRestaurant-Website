@@ -14,14 +14,14 @@ const HeaderPage=()=>{
                         <div className='btnContainer'>
                             <button name="zamawian" onClick={(e)=>{navigate('/order')}}>zamawiam</button>
                         </div>
-                        <div className='btnContainer'>
-                            <button name="menu" onClick={(e)=>{navigate('/menu')}}>Menu</button>
-                        </div>
                         <Link to="prom" spy={true} smooth={true} offset={50} duration={500} className="link" >
                             <div className='btnContainer'>
                                 <button name="promocje" >PROMOCJE</button>
                             </div>
                         </Link>
+                        <div className='btnContainer'>
+                            <button name="gallery" onClick={(e)=>{navigate('/gallery')}}>Galeria</button>
+                        </div>
                         <Link to="inspiration" spy={true} smooth={true} offset={50} duration={500} className="link" >
                             <div className='btnContainer'>
                                 <button name="inspiration" >znajdź inspiracje</button>

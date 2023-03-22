@@ -16,7 +16,7 @@ const StartPage=()=>{
             <div id="prom"/>
             <Promocje />
             <div className='mainContainer' id="inspiration">
-                {/* <CarouselCards/> */}
+                <CarouselCards/>
                 {/* <Galery/> */}
             </div>
         </StartPageContainer>
