@@ -25,6 +25,8 @@ function App() {
       price: e.price,
       type: `${e.type}`,
       id: id,
+      stripe_id: e.stripe_id,
+      stripe_price: e.stripe_price,
     };
 
     setProducts((p) => ++p);

@@ -9,13 +9,7 @@ const Galery=()=>{
     const [tempImg,setTempImg]=React.useState('');
     
     const [isLoading,setIsLoading]=React.useState(false);
-    
-    // React.useEffect(()=>{
-    //     setIsLoading(true);
-    //     setTimeout(()=>{
-    //         setIsLoading(false);
-    //     }, 3000)
-    // },[])
+
     
     const getImg=(imgSrc)=>{
         console.log(imgSrc);
@@ -42,13 +36,13 @@ const Galery=()=>{
                 {
                     GalleryData.map((val,i)=>{
                         return(
-                            <div className="pics" key={i} onClick={()=>getImg(val.img)}>
-                                <img 
-                                src={val.img} 
-                                style={{width:'100%'}}
-                                loading="lazy"
-                                />
-                            </div>
+                                <div className="pics"  onClick={()=>getImg(val.img)}>
+                                    <img 
+                                    src={val.img} 
+                                    style={{width:'100%'}}
+                                    loading="lazy"
+                                    />
+                                </div>
                         )
                     })
                 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from "../assets/img/wlogo.png"
+import logo from "../assets/img/blw.png"
 import IconRow from './Footer/iconRow'
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { FiClock } from 'react-icons/fi';
@@ -40,7 +40,7 @@ const Footer=()=>{
                     </div>
                     <div className='textSection'>
                         <MdLocalPostOffice size={25}/>
-                        <p>rezerwacje@pizzabistro.pl </p>
+                        <p>rezerwacje@amerianburger.pl </p>
                     </div>
                     <div className='textSection'>
                         <FiClock size={25}/>
@@ -64,7 +64,7 @@ display: flex;
 flex-direction: row;
 background-color: #1e1e1e;
 .logo{
-    width: 15vw;
+    width: 5vw;
 }
     .leftTextArea{
         /* border: 1px solid red; */

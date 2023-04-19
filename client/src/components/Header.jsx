@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import logo from '../assets/img/blw.png';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 const Header=()=>{
 
     const [whiteBar,setWhiteBar]=React.useState(0);
@@ -30,16 +31,16 @@ const Header=()=>{
                 <h1>American burgers</h1>
             </div>
             <div className="rightSideHeader" >
-                <div className='rightHeaderParagraf' onMouseEnter={(e)=>setWhiteBar(1)} onMouseLeave={(e)=>setWhiteBar(0)}>
+                <div className='rightHeaderParagraf' onClick={(e)=>navigate("/order")} onMouseEnter={(e)=>setWhiteBar(1)} onMouseLeave={(e)=>setWhiteBar(0)}>
                     <p>Zamawiam</p>
                     <div className="whiteBar" style={whiteBar===1?fillBar:{emptyBar}}/>
                 </div>
-                <div className="rightHeaderParagraf" onMouseEnter={(e)=>setWhiteBar(2)} onMouseLeave={(e)=>setWhiteBar(0)}>
-                    <p>Promocje</p>
-                    <div className="whiteBar" style={whiteBar===2?fillBar:{emptyBar}}/>
-                </div>
-                <div className="rightHeaderParagraf" onMouseEnter={(e)=>setWhiteBar(3)} onMouseLeave={(e)=>setWhiteBar(0)}>
-                    <p>Kontakt</p>
+                    <div className="rightHeaderParagraf" onMouseEnter={(e)=>setWhiteBar(2)} onMouseLeave={(e)=>setWhiteBar(0)}>
+                        <p>Promocje</p>
+                        <div className="whiteBar" style={whiteBar===2?fillBar:{emptyBar}}/>
+                    </div>
+                <div className="rightHeaderParagraf" onClick={(e)=>navigate("/gallery")} onMouseEnter={(e)=>setWhiteBar(3)} onMouseLeave={(e)=>setWhiteBar(0)}>
+                    <p>Galeria</p>
                     <div className="whiteBar" style={whiteBar===3?fillBar:{emptyBar}}/>
                 </div>
             </div>

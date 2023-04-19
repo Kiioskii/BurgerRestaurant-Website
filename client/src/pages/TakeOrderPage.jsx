@@ -1,8 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import { ImCancelCircle } from 'react-icons/im';
+import { CardElement, useStripe, useElements, Elements } from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 import PaymentButton from "../components/PaymentButton"
-const TakeOrderPage=({productList,removeProduct,suma})=>{
+
+const stripePromise = loadStripe('pk_test_51Mo5ZZJRD3oD7W0OdZuvWfPv1rdd8Ys1jiNxQ7C8JlOc4OqGpFUaflqzo8fpV3d5HY7EaeCG61lNv4dLelulnOSK00KoYyoMG2');
+
+const WrappedCheckoutForm=({productList,removeProduct,suma})=>{
+
+    const handleOrder=async()=>{
+        console.log(productList);
+        console.log(JSON.stringify(productList));
+        const stripeResponse=await fetch('/create-checkout-session',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(productList),
+        })
+        const body = await stripeResponse.json()
+        window.location.href = body.url
+    }
+
 
     return(
     <TakeOrderPageContainer>
@@ -14,27 +34,27 @@ const TakeOrderPage=({productList,removeProduct,suma})=>{
         <div className="MainPart">
             <div className="leftSide">
                 <h1>Dane kontakotwe:</h1>
-                <form >
-                    <>
-                        <label>Imię i Nazwisko:</label>
-                        <input type='text'/>
-                    </>
-                    <>
-                        <label>Nr. kontaktowy:</label>
-                        <input type='text'/>
-                    </>
-                    <>
-                        <label>Email:</label>
-                        <input type='email'/>
-                    </>
-                    <div className="checboxContainer">
-                        <input type="checkbox" id="regualmin"/>
-                        <label id="regulaminText"> Oświadczam że zapoznałem się z regulaminem strony i go akceptuje.</label>
-                    </div>
-                </form>
-                <div className="FinalButton">
-                    <PaymentButton productList={productList}/>
-                </div>
+                    <form>
+                        <>
+                            <label>Imię i Nazwisko:</label>
+                            <input type='text'/>
+                        </>
+                        <>
+                            <label>Nr. kontaktowy:</label>
+                            <input type='text'/>
+                        </>
+                        <>
+                            <label>Email:</label>
+                            <input type='email'/>
+                        </>
+                        <div className="checboxContainer">
+                            <input type="checkbox" id="regualmin"/>
+                            <label id="regulaminText"> Oświadczam że zapoznałem się z regulaminem strony i go akceptuje.</label>
+                        </div>
+                    </form>
+                        <div className="FinalButton">
+                            <button onClick={handleOrder}>Płacę</button>
+                        </div>
             </div>
                 <div className="rightSide">
                     <h1>KOSZYK:</h1>
@@ -66,7 +86,15 @@ const TakeOrderPage=({productList,removeProduct,suma})=>{
 
 }
 
-export default TakeOrderPage
+const TakeOrderPage = ({productList,removeProduct,suma}) => {
+    return (
+      <Elements stripe={stripePromise}>
+        <WrappedCheckoutForm productList={productList} removeProduct={removeProduct} suma={suma}/>
+      </Elements>
+    );
+  };
+
+export default TakeOrderPage;
 
 const TakeOrderPageContainer=styled.div`
     width: 100%;
